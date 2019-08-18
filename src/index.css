@@ -8,6 +8,12 @@ ul {
     padding-left: 30px;
 }
 
+button {
+    padding: .5rem;
+    width: 10rem;
+}
+
+
 .board-row:after {
     clear: both;
     content: '';
@@ -22,15 +28,14 @@ ul {
     background: #fff;
     border: 1px solid #999;
     float: left;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 34px;
-    height: 34px;
+    font-size: 4rem;
+    line-height: 5rem;
+    height: 5rem;
     margin-right: -1px;
     margin-top: -1px;
     padding: 0;
     text-align: center;
-    width: 34px;
+    width: 5rem;
 }
 
 .square:focus {

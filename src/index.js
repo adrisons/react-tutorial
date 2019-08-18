@@ -84,10 +84,13 @@ class Game extends React.Component {
         const current = history[this.state.stepNumber];
         const squares = current.squares.slice();
         const winner = calculateWinner(squares);
+        const endedGame = calculateEnd(squares);
 
         let status;
         if (winner) {
             status = 'Winner: ' + winner;
+        } else if (endedGame) {
+            status = 'End game. No winner';
         } else {
             status = 'Next player: ' + (this.props.xIsNext ? 'X' : 'O');
         }
@@ -96,10 +99,7 @@ class Game extends React.Component {
             let desc;
             if (step && step.index != null) {
                 const index = step.index + 1;
-                const [row, column] = [
-                    Math.ceil(index / 3),
-                    index % 3
-                ];
+                const [row, column] = [Math.ceil(index / 3), index % 3];
                 desc = 'Go to move (' + row + ', ' + column + ')';
             } else {
                 desc = move ? 'Go to move #' + move : 'Go to game start';
@@ -126,6 +126,10 @@ class Game extends React.Component {
             </div>
         );
     }
+}
+
+function calculateEnd(squares) {
+    return squares.every(s => s !== null);
 }
 
 function calculateWinner(squares) {
